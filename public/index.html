@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/hint.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <script type="text/javascript" src="libs/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="libs/angular/angular.js"></script>
+  <script type="text/javascript" src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+  <script type="text/javascript" src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="libs/angular-resource/angular-resource.js"></script>
+  <script type="text/javascript" src="libs/angular-messages/angular-messages.js"></script>
+  <script type="text/javascript" src="libs/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="libs/lodash/lodash.js"></script>
+  <script type="text/javascript" src="modules/hint/hint.js"></script>
+  <script src="libs/highcharts/highcharts.js"></script>
+
+</head>
+
+<body ng-app="main">
+    <div ng-include="'nav.html'"></div>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+    <script type="text/javascript" src="modules/app.js"></script>
+    <script type="text/javascript" src="modules/question/question-filter.js"></script>
+    <script type="text/javascript" src="modules/question/question-controller.js"></script>
+    <script type="text/javascript" src="modules/newInterview/question-new-controller.js"></script>
+    <script type="text/javascript" src="modules/login/login-app.js"></script>
+    <script type="text/javascript" src="modules/login/login-controller.js"></script>
+    <script type="text/javascript" src="modules/login/login-directive.js"></script>
+    <script type="text/javascript" src="modules/interview/interview-app.js"></script>
+    <script type="text/javascript" src="modules/interview/interview-controller.js"></script>
+    <script type="text/javascript" src="modules/interview/interview-directive.js"></script>
+    <script type="text/javascript" src="modules/stat/controller.js"></script>  
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+<div class="pull-right">
+    <span ng-show="!!user" class="navbar-text">Hello {{user}}!</span>
+    <button ng-hide="!!user" type="button" class="btn btn-default navbar-btn" ui-sref="newUser"><strong>Sign Up</strong></button>
+    <button ng-hide="!!user" type="button" class="btn btn-default navbar-btn" ng-click="open()"><strong>Sign In</strong></button>
+    <button ng-show="!!user" type="button" class="btn btn-default navbar-btn" ng-click="logout()"><strong>Sign Out</strong></button>
+</div>

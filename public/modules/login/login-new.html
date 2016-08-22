@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Sign Up</h3>
+    </div>
+    <div class="panel-body">
+        <form name="userForm" class="form-horizontal">
+            <!-- <p class="has-error">{{errorMessage}}</p> -->
+            <!-- for user name -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                <label class="col-sm-2 control-label">Username*</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="username" ng-model="loginUser" ng-model-options="{ debounce: 500 }" ng-change="checkUsername(loginUser)" required="">
+                </div>
+                <p class="help-block" ng-show="userForm.username.$invalid && !userForm.username.$pristine && !userExist">This field is required</p>
+                <p class="help-block" ng-show="userExist && !userForm.username.$pristine">Username already exist</p>
+                <span ng-show="!userForm.username.$pristine && !userForm.username.$invalid && !userExist" class="glyphicon glyphicon-ok help-block" style="color: green"></span>
+            </div>
+
+            <!-- for user password -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                <label class="col-sm-2 control-label">Password*</label>
+                <div class="col-sm-6">
+                    <input type="password" name="password" class="form-control" ng-model="loginPwd" ng-model-options="{ debounce: 500 }" required="" ng-maxlength="16" ng-minlength="4">
+                </div>
+                <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">This field is required</p>
+                <p class="help-block" ng-show="userForm.password.$error.minlength">Password has at least 4 charactors</p>
+                <p class="help-block" ng-show="userForm.password.$error.maxlength">Password has at most 16 charactors</p>
+                <span ng-show="!userForm.password.$pristine && !userForm.password.$invalid" class="glyphicon glyphicon-ok" style="color: green"></span>
+            </div>
+
+
+            <!-- for confirm password -->
+
+            <div class="form-group" ng-class="{ 'has-error' : userForm.confirmPwd.$invalid && !userForm.confirmPwd.$pristine }">
+                <label class="col-sm-2 control-label">Confirm Password*</label>
+                <div class="col-sm-6">
+                    <input type="password" name="confirmPwd" class="form-control" ng-model="confirmPwd" ng-model-options="{ debounce: 500 }" pw-check required="" compare-to="loginPwd">
+                </div>
+                <p class="help-block" ng-show="userForm.confirmPwd.$error.required && !userForm.confirmPwd.$pristine">This field is required</p>
+                <p class="help-block" ng-show="!userForm.confirmPwd.$error.required && userForm.confirmPwd.$invalid">Password not match</p>
+                <span ng-show="!userForm.confirmPwd.$pristine && !userForm.confirmPwd.$invalid" class="glyphicon glyphicon-ok help-block" style="color: green"></span>
+            </div>
+
+
+            <!-- for user email -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label class="col-sm-2 control-label">Email*</label>
+                <div class="col-sm-6">
+                    <input type="email" name="email" class="form-control" ng-model="loginEmail" ng-model-options="{ debounce: 500 }" required="">
+                </div>
+                <p class="help-block" ng-show="userForm.email.$invalid && !userForm.email.$pristine">Please use right email format</p>
+                <span ng-show="!userForm.email.$pristine && !userForm.email.$invalid" class="glyphicon glyphicon-ok help-block" style="color: green"></span>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-success" type="submit" ng-disabled="userForm.$invalid" ng-click="sign(loginUser, loginPwd, loginEmail)">Sign Up</button>
+        <button class="btn btn-primary" type="reset"ng-click="reset()">reset</button>
+    </div>
+</div>
+

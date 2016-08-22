@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
+            <tr class="active">
+                <th class="col-md-4">Client: {{qs.interview.Client}}</th>
+                <th class="col-md-3">Candidate: {{qs.interview.Candidate}}</th>
+                <th class="col-md-3">Type: {{qs.interview.Type}}</th>
+                <th class="col-md-2">Date: {{qs.interview.Date | date:'MM/dd/yyyy'}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="12">Question: {{qs.description}}</td>
+                <!-- <td colspan="12">Question: {{qs._id}}</td> -->
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

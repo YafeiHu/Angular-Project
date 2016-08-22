@@ -1,0 +1,56 @@
+<script type="text/ng-template" id="questionPopover.html">
+    <div>
+        <p>Create by {{qs.interview.Candidate}}</p>
+    </div>
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading container-fluid inline">
+        <div class="pull-left">
+            <h5><strong>Total Questions: </strong><span class="label label-default">{{question.questionCount}}</span></h5>
+        </div>
+        <div class="pull-right">
+            <input name="searchbox" ng-model="question.search">
+        </div>
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr class="active">
+                <th class="col-md-2" ng-click="question.sortBy('interview.Client')">
+                    <strong class="head">Company</strong>
+                </th>
+                <th class="col-md-7" ng-click="question.sortBy('question')">
+                    <strong class="head">Question</strong>
+                </th>
+                <th class="col-md-3" ng-click="question.sortBy('interview.Date')">
+                    <strong class="head">Date</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="question-list-item" ng-repeat="qs in question.questionGroup | filter:question.search">
+                <td class="col-md-2">
+                    <div>
+                        <span class="question-client">{{qs.interview.Client}}</span>
+                    </div>
+                </td>
+                <td class="col-md-9">
+                    <div>
+                        <span uib-popover-template="question.questionInfoPopover.templateUrl" popover-trigger="mouseenter" popover-placement="bottom">
+                            <a class="question-description" ng-click="question.showInterview(qs)">{{qs.description | cutQuestion}}</a>
+                        </span>
+                        <span class="tag-wrapper" ng-repeat="tag in (qs.tags | cutTags)">
+                            <a class="tag-value">{{tag}}</a>
+                        </span>
+                    </div>
+                </td>
+                <td class="col-md-1"><span class="question-date">{{qs.interview.Date | date:'MM/dd/yyyy'}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="panel-footer text-center" ng-if="question.questionCount">
+        <uib-pagination max-size=10 total-items="question.questionCount" items-per-page="question.qSize" ng-model="question.qPage" ng-change="question.setPage()" boundary-links="true"></uib-pagination>
+    </div>
+</div>
+

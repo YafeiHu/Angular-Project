@@ -1,0 +1,23 @@
+<form name="userForm">
+    <div class="modal-header">
+        <h3> {{usr || "Welcome"}}!</h3>
+    </div>
+    <div class="modal-body">
+        <div ng-show="!!msg" class="alert alert-danger" role="alert">{{msg}}</div>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+            <label>User Name</label>
+            <input class="form-control" name="username" placeholder="username" ng-model="loginUser" required>
+            <p class="help-block" ng-show="userForm.username.$invalid && !userForm.username.$pristine && !userExist">This field is required</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+            <label>Password</label>
+            <input type="password" placeholder="password" name="password" class="form-control" ng-model="loginPwd" required ng-minlength="4" ng-maxlength="16">
+            <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">This field is required</p>
+            <p class="help-block" ng-show="userForm.password.$error.minlength">Password has at least 4 charactors</p>
+            <p class="help-block" ng-show="userForm.password.$error.maxlength">Password has at most 16 charactors</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="login(loginUser, loginPwd)">Login</button>
+    </div>
+</form>

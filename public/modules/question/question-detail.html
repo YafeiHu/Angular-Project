@@ -1,0 +1,85 @@
+<div class="alert alert-danger" ng-if="questionDetail.deleteSucess" role="alert">
+  <strong>DELETE SUCCESSFUL!</strong> You have delete a question successfully! Click <a class="alert-link" ui-sref="question">HERE</a> to view the question list
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <label>Question Detail</label>
+    </div >
+    <div class="panel-body">
+        <!-- for question description -->
+        <div class="row" ng-if="!questionDetail.editQuestion">
+            <div class="col-md-1">
+                <label>Description: </label>
+            </div>
+            <div class="col-md-11"><pre>{{questionDetail.questionData.description}}</pre></div>
+            <button type="button" style="margin-right:10px" class="btn btn-success pull-right" ng-click="questionDetail.editQuestion=!questionDetail.editQuestion">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div class="row" ng-if="questionDetail.editQuestion">
+            <div class="form-group question-form">
+                <label class="control-label">Description: </label>
+                <textarea class="form-control" placeholder="Description" rows="3" ng-model="questionDetail.questionData.description" ng-required></textarea>
+                <label class="control-label">Tags: </label>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="tag-wrapper" ng-repeat="tag in questionDetail.tags">
+                            <a class="tag-value">{{tag}}</a><span class="glyphicon glyphicon-remove" ng-click="questionDetail.removeTag($index)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="Tag" ng-model="questionDetail.newTag">
+                    <span class="input-group-addon" ng-click="questionDetail.updateTag(questionDetail.newTag)">ADD TAG</span>
+                </div>
+                <p class="control-label alert alert-success" ng-show="questionDetail.editSuccess">EDIT SUCCESS</p>
+            </div>
+            <div class="form-group">
+                <button type="button" style="margin-right:10px" class="btn btn-warning pull-right" ng-click="questionDetail.closeEdit()">Close</button>
+                <button type="button" style="margin-right:10px" class="btn btn-danger pull-right" ng-click="questionDetail.deleteQuestion(questionDetail.questionData._id)">Delete</button>
+                <button type="button" style="margin-right:10px" class="btn btn-success pull-right" ng-click="questionDetail.updateQuestion(questionDetail.questionData.description, questionDetail.tags, questionDetail.questionData._id)">Update</button>
+            </div>
+        </div>
+        <!-- for tags -->
+        <div class="row" ng-if="questionDetail.questionData.tags.length > 0">
+            <div class="col-md-1">
+                <label>Tags: </label>
+            </div>
+            <div class="col-md-11">
+                <div class="tag-wrapper" ng-repeat="tag in questionDetail.questionData.tags">
+                    <a class="tag-value">{{tag}}</a></span>
+                </div>
+            </div>
+        </div>
+        <!-- for comments -->
+        <hr>
+        <div ng-show="questionDetail.comments.length == 0">
+            <h4>No comment right now</h4>
+        </div>
+        <div ng-show="questionDetail.comments.length > 0">
+            <h4>Comments:</h4>
+        </div>
+        <div>
+            <div class="comment comment-info" ng-repeat="comment in questionDetail.comments"> 
+                <h5>{{comment.username}}</h5> 
+                <p>{{comment.comment}}</p>
+            </div>
+        </div>
+        <!-- add comment -->
+        <hr>
+
+        <div>
+            <form name="commentForm">
+                <div class="form-group">
+                  <label class="control-label" for="comment-area">Input with your comment</label>
+                  <textarea class="form-control" id="comment-area" placeholder="Comments" ng-model="comment" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                  <button ng-disabled="commentForm.$invalid" type="submit" class="btn btn-primary" ng-click="questionDetail.newComment(comment, questionDetail.questionData._id)">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

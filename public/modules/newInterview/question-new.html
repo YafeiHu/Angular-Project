@@ -1,0 +1,137 @@
+<div class="alert alert-success" ng-show="insertSuccess" role="alert">
+  <strong>Congratulation!</strong> You have inserted an Interview successfully! Click <a class="alert-link" ui-sref="interview">HERE</a> to view the Interview List
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">New Interview with Questions</h3>
+    </div>
+
+    <div class="panel-body">
+        <form class="form">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="control-label">Client:</label>
+                    <hint data="client" fetch="fetchClients"></hint>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Date:</label>
+                    <p class="input-group">
+                        <input type="date" class="form-control" uib-datepicker-popup ng-model="Date" is-open="nq.status.opened" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="nq.status.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Candidate:</label>
+                    <input class="form-control" ng-model="Candidate" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Type:</label>
+                    <input class="form-control" ng-model="Type" required>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <!-- show added questions -->
+        <div class="panel panel-default question-item" ng-repeat="question in questions track by $index">
+            <div class="panel-heading control-label">
+                <div>
+                    <label>{{"Question #"+$index}}</label>
+                    <button type="button" class="btn btn-danger pull-right" aria-label="Left Align" ng-click="removeQuestion($index)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary pull-right" style="margin-right:10px" ng-click="question.edit = !question.edit" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </button>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- if user click edit button -->
+            <div class="panel-body edit-panel" ng-if="question.edit">
+                <div class="form-group question-form" id="newQuestions">
+                    <label>Description: </label>
+                    <div>
+                        <textarea class="form-control" rows="6" col="8" ng-model="question.description" required></textarea>
+                    </div>
+                    <label>Tags: </label>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="tag-wrapper" ng-repeat="tag in question.tags">
+                                    <a class="tag-value">{{tag}}</a><span class="glyphicon glyphicon-remove" ng-click="removeTag($index, question)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <hint data="data" fetch="fetchTags"></hint>
+                            </div>
+                            <button type="button" class="btn btn-primary" ng-click="addTag(data, question)">Add Tag</button>
+                            <button type="button" style="margin-right:10px" class="btn btn-warning pull-right" ng-click="reset(question)">Reset</button>
+                            <button type="button" style="margin-right:10px" class="btn btn-success pull-right" ng-click="question.edit=false">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- if user not click edit -->
+            <div class="panel-body" ng-if="!question.edit">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Description: </label>
+                    </div>
+
+                    <div class="col-md-10"><pre>{{question.description}}</pre></div>
+                </div>
+                <div class="row" ng-show="question.tags.length > 0">
+                    <div class="col-md-2">
+                        <label>Tags: </label>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tag-wrapper" ng-repeat="tag in question.tags">
+                            <a class="tag-value">{{tag}}</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- edit current question form -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>New Question</label>
+            </div>
+            <div class="panel-body">
+                <div class="form-group question-form" id="newQuestions">
+                    <label>Description: </label>
+                    <div>
+
+                        <textarea class="form-control" rows="6" col="8" ng-model="curQuestion.description" required></textarea>
+                    </div>
+                    <label>Tags: </label>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="tag-wrapper" ng-repeat="tag in curQuestion.tags">
+                                    <a class="tag-value">{{tag}}</a><span class="glyphicon glyphicon-remove" ng-click="removeTag($index, curQuestion)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <hint data="tagInfo" fetch="fetchTags"></hint>
+                            </div>
+                            <button type="button" class="btn btn-primary" ng-click="addTag(tagInfo, curQuestion)">Add Tag</button>
+                            <button type="button" style="margin-right:10px" class="btn btn-warning pull-right" ng-click="reset(curQuestion); tagInfo=null">Reset</button>
+                            <button type="button" style="margin-right:10px" class="btn btn-success pull-right" ng-click="addQuestion(curQuestion); tagInfo=null">Add Question</button>
+                        </div>
+                    </div>
+
+                </div>            
+            </div>
+        </div>
+        <button class="btn btn-success" ng-click="submitQuestion(curQuestion)">Submit</button>
+    </div>
+    <!-- <div class="panel-body">
+        <hint info="info"></hint>
+    </div> -->
+</div>

@@ -1,0 +1,194 @@
+* {
+  font-size: 14px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.question-form {
+    padding: 15px 15px;
+    /*background-color: #e7e7e7;*/
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 4px #e5e9ef;
+}
+
+/*for tags */
+
+.tag-wrapper {
+    display: inline-block;
+    background-color: #e5e9ef;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.tag-value {
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.glyphicon,
+.glyphicon-remove {
+    top: 2px;
+    cursor: pointer;
+}
+
+
+/*end for tags*/
+
+
+/*for add question animation*/
+
+.question-item.ng-move,
+.question-item.ng-enter,
+.question-item.ng-leave {
+  transition:all linear 0.3s;
+
+}
+
+.question-item.ng-leave.ng-leave-active,
+.question-item.ng-move,
+.question-item.ng-enter {
+  opacity:0;
+  position: relative;
+  left: -200px;
+}
+
+.question-item.ng-leave,
+.question-item.ng-move.ng-move-active,
+.question-item.ng-enter.ng-enter-active {
+  opacity:1;
+  left: 0px;
+}
+
+
+.edit-panel.ng-move,
+.edit-panel.ng-enter,
+.edit-panel.ng-leave {
+  transition:all linear 0.3s;
+
+}
+
+.edit-panel.ng-leave.ng-leave-active,
+.edit-panel.ng-move,
+.edit-panel.ng-enter {
+  opacity:0;
+  position: relative;
+  left: -200px;
+}
+
+.edit-panel.ng-leave,
+.edit-panel.ng-move.ng-move-active,
+.edit-panel.ng-enter.ng-enter-active {
+  opacity:1;
+  left: 0px;
+}
+
+/*end for add question animation*/
+
+
+/*for comment*/
+.comment-info {
+    border-left-color: #1b809e !important;
+}
+
+.comment {
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+/*end for comment*/
+
+
+.clear {
+    clear: both;
+}
+/*
+table tr{
+  cursor: pointer;
+}*/
+
+/*for table head*/
+/*.head{
+  cursor: pointer;
+  background-color: #8BC5F7 !important;
+  font-size: 17px;
+  color: white;
+  height: 50px;
+  padding: 15px !important;
+  border: 1px solid white;
+}
+
+.head:hover{
+  background-color: #5899D2 !important;
+}*/
+
+/*for question list*/
+.question-description, .question-client, .question-date, .interview-header{
+  font-size: 16px;
+}
+
+.head{
+  font-size: 18px;
+}
+
+td{
+  vertical-align: middle !important;
+}
+
+
+/*for animation*/
+.question-list-item{
+  position: relative;
+}
+
+.question-list-item.ng-move,
+.question-list-item.ng-enter,
+.question-list-item.ng-leave {
+    transition:all linear 0.4s;
+    
+}
+
+.question-list-item.ng-leave.ng-leave-active,
+.question-list-item.ng-move,
+.question-list-item.ng-enter {
+    opacity: 0;
+    /*left: -200px;*/
+}
+
+.question-list-item.ng-leave,
+.question-list-item.ng-move.ng-move-active,
+.question-list-item.ng-enter.ng-enter-active {
+    opacity: 1;
+    /*left: 0px;*/
+}
+
+.interview-list-item{
+  position: relative;
+}
+
+.interview-list-item.ng-move,
+.interview-list-item.ng-enter,
+.interview-list-item.ng-leave {
+    transition:all linear 0.3s;
+    
+}
+
+.interview-list-item.ng-leave.ng-leave-active,
+.interview-list-item.ng-move,
+.interview-list-item.ng-enter {
+    opacity: 0;
+    left: -200px;
+}
+
+.interview-list-item.ng-leave,
+.interview-list-item.ng-move.ng-move-active,
+.interview-list-item.ng-enter.ng-enter-active {
+    opacity: 1;
+    left: 0px;
+}
+

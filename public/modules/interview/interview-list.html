@@ -1,0 +1,41 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading container-fluid">
+        <div class="pull-left">
+            <h5><strong>Total Interviews: </strong><span class="label label-default">{{interviewList.interviewCount}}</span></h5>
+        </div>
+        <div class="pull-right">
+            <input name="searchbox" ng-model="interviewList.search">
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr class="active">
+                <th class="col-md-3" ng-click="interviewList.sortBy('Client')">
+                    <strong class="head">Company</strong>
+                </th>
+                <th class="col-md-4" ng-click="interviewList.sortBy('Candidate')">
+                    <strong class="head">Candidate</strong>
+                </th>
+                <th class="col-md-4" ng-click="interviewList.sortBy('Type')">
+                    <strong class="head">Type</strong>
+                </th>
+                <th class="col-md-1" ng-click="interviewList.sortBy('Date')">
+                    <strong class="head">Date</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="interview-list-item" ng-repeat="interview in interviewList.interviewQuestion | filter:interviewList.search" ng-click="interviewList.showInterview(interview._id, interview.Client)">
+                <td class="col-md-4"><a class="interview-header">{{interview.Client}}</a></td>
+                <td class="col-md-4"><a class="interview-header">{{interview.Candidate}}</a></td>
+                <td class="col-md-3"><a class="interview-header">{{interview.Type}}</a></td>
+                <td class="col-md-1"><a class="interview-header">{{interview.Date | date:'MM/dd/yyyy'}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="panel-footer text-center" ng-if="interviewList.interviewCount">
+        <uib-pagination max-size=10 total-items="interviewList.interviewCount" items-per-page="interviewList.iSize" ng-model="interviewList.iPage" ng-change="interviewList.setPage()" boundary-links="true"></uib-pagination>
+    </div>
+</div>
+</div>

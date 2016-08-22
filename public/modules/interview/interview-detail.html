@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">      
+        <tr class="active">
+            <th class="col-md-4">Client: {{interviewList.interviewInfo.Client}}</th>
+            <th class="col-md-3">Candidate: {{interviewList.interviewInfo.Candidate}}</th>
+            <th class="col-md-3">Type: {{interviewList.interviewInfo.Type}}</th>
+            <th class="col-md-2">Date: {{interviewList.interviewInfo.Date | date:'MM/dd/yyyy'}}</th>
+        </tr>
+    </div>
+    <div class="alert alert-danger" ng-if="interviewList.questionDetailNull" role="alert">
+        No question detail for this interview.
+    </div>
+    <div class="panel-body" ng-if="!interList.questionDetailNull">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="qs in interviewList.questionArray">
+                <a ng-click="interviewList.questionDetail(qs)">{{$index + 1 + ". " + qs.description}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

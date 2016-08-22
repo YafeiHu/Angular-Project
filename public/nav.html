@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span><img alt="brand" src="logo.png" style="height:30px; margin: -9px 3px"></span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active"><a ui-sref="question({qQuestion:null,qCompany:null,pSort:null,qPage:null,qSize:null,psorta:null,befored:null,afterd:null,qTag:null})">Question</a></li>
+                <li ui-sref-active="active"><a ui-sref="interview({iCompany:null,iCandidate:null,iType:null,pSort:null,qPage:null,qSize:null,psorta:null,befored:null,afterd:null})">Interview</a></li>
+                <li ui-sref-active="active" ng-show="!!user"><a ui-sref="new">New Interview</a></li>
+                <li ui-sref-active="active" ng-show="!!user"><a ui-sref="stat">Statistics</a></li>
+            </ul>
+            <div login-nav></div>
+        </div>
+    </div>
+</nav>
